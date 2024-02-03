@@ -1,11 +1,12 @@
 // CallPopup.js
 import React, { useState } from 'react';
+import { View, Text, Button, TextInput } from 'react-native';
 
 function CallPopup({ contact, onCallEnd }) {
   const [callStatus, setCallStatus] = useState('');
 
-  const handleStatusChange = (event) => {
-    setCallStatus(event.target.value);
+  const handleStatusChange = (status) => {
+    setCallStatus(status);
   };
 
   const handleCallEnd = () => {
@@ -13,18 +14,15 @@ function CallPopup({ contact, onCallEnd }) {
   };
 
   return (
-    <div>
-      <h3>Call from {contact.name}</h3>
-      <p>Call details...</p>
-      <select value={callStatus} onChange={handleStatusChange}>
-        <option value="">Select status</option>
-        <option value="Interested">Interested</option>
-        <option value="Not Interested">Not Interested</option>
-        <option value="Follow-up Needed">Follow-up Needed</option>
-        {/* Add more options as needed */}
-      </select>
-      <button onClick={handleCallEnd}>End Call</button>
-    </div>
+    <View>
+      <Text>Call from {contact.name}</Text>
+      <TextInput
+        placeholder="Enter status"
+        value={callStatus}
+        onChangeText={handleStatusChange}
+      />
+      <Button title="End Call" onPress={handleCallEnd} />
+    </View>
   );
 }
 

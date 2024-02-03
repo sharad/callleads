@@ -1,5 +1,6 @@
 // App.js
 import React, { useState } from 'react';
+import { View, Text } from 'react-native';
 import ContactsList from './ContactsList';
 import CallPopup from './CallPopup';
 
@@ -20,11 +21,13 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Marketing Contact Management</h1>
+    <View>
+      <Text></Text>
+      <Text></Text>
+      <Text>Marketing Contact Management</Text>
       <ContactsList contacts={contacts} onCallReceived={handleCallReceived} />
       {showCallPopup && <CallPopup contact={currentCall} onCallEnd={handleCallEnd} />}
-    </div>
+    </View>
   );
 }
 
